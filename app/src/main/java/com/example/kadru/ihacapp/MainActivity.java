@@ -1,6 +1,8 @@
 package com.example.kadru.ihacapp;
 
 
+
+import android.content.Context;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -17,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     public static int typeId;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +69,6 @@ public class MainActivity extends AppCompatActivity {
                      typeId = 21;
                  else if (id == 6)
                      typeId = 22;
-
-
-
-
             }
         });
 
@@ -86,10 +88,18 @@ public class MainActivity extends AppCompatActivity {
         });
         }
 
+
     public void objects_res() {
         ListView objects_item = (ListView) findViewById(R.id.locations_item);
         final DbObjectsRepository dbObjectsRepository = new DbObjectsRepository(this.getApplicationContext());
         ArrayAdapter<String> adapter_item = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dbObjectsRepository.getData());
         objects_item.setAdapter(adapter_item);
     }
+
+    //public void image_res() {
+    //    ImageView image_item = (ImageView) findViewById(R.id.image_item);
+     //   final DbObjectsRepository dbObjectsRepository = new DbObjectsRepository(this.getApplicationContext());
+     //   Picasso.with(context)
+     //           .load("file:///android_asset/" + item.imgPosition)
+   // }
 }
