@@ -1,6 +1,6 @@
 package com.example.kadru.ihacapp;
 
-import android.database.Cursor;
+
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    public static int typeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "itemClick: position = " + position + ", id = "
                         + id);
                 objects_res();
+                if (id == 0)
+                    typeId = 1;
+                 else if (id == 1)
+                     typeId = 18;
+                 else if (id == 2)
+                     typeId = 19;
+                 else if (id == 3)
+                     typeId = 20;
+                 else if (id == 4)
+                     typeId = 20;
+                 else if (id == 5)
+                     typeId = 21;
+                 else if (id == 6)
+                     typeId = 22;
+
+
+
 
             }
         });
