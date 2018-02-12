@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
                 Log.d(TAG, "itemClick: position = " + position + ", id = "
                         + id);
-                    objects_res();
+                   objects_res();
 
                 if (id == 0)
                     typeId = 1;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     typeId = 22;
             }
         });
-
+       // startActivity(new Intent(this, ObjectActivity.class));
 
         locations_item.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
