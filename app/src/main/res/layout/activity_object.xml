@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.kadru.ihacapp.ObjectActivity">
 
-    <ImageView
-        android:id="@+id/image_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/todo" />
-
     <ListView
         android:id="@+id/object_item"
         android:layout_width="match_parent"
