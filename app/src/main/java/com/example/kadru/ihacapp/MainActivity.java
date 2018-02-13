@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     public static int typeId;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             throw sqle;
         }
 
-        ListView locations_item = (ListView) findViewById(R.id.locations_item);
+        final ListView locations_item = (ListView) findViewById(R.id.locations_item);
         final DbRepository repository = new DbRepository(this.getApplicationContext());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
         locations_item.setAdapter(adapter);
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
                 Log.d(TAG, "itemClick: position = " + position + ", id = "
                         + id);
-                   objects_res();
-
+                  // objects_res();
+                    onClick(ObjectActivity.object_item);
                 if (id == 0)
                     typeId = 1;
                 else if (id == 1)
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     typeId = 22;
             }
         });
-       // startActivity(new Intent(this, ObjectActivity.class));
+
 
         locations_item.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -93,11 +93,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void objects_res() {
-        ListView location_item = (ListView) findViewById(R.id.locations_item);
-        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
-        location_item.setAdapter(adapter);
+//    public void objects_res() {
+//        ListView location_item = (ListView) findViewById(R.id.locations_item);
+//        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
+//        location_item.setAdapter(adapter);
+//    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, ObjectActivity.class);
+        startActivity(intent);
+        // startActivity(new Intent(this, ObjectActivity.class));
+//        ListView location_item = (ListView) findViewById(R.id.locations_item);
+//        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
+//        location_item.setAdapter(adapter);
     }
 
 

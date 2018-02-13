@@ -6,16 +6,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ObjectActivity extends AppCompatActivity {
-
+    public static ListView object_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-       // ListView locations_item = (ListView) findViewById(R.id.locations_item);
-      //  final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
-       // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
-     //   locations_item.setAdapter(adapter);
+        object_item = (ListView) findViewById(R.id.object_item);
+        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, repository.getData());
+        object_item.setAdapter(adapter);
 
 
         //    ImageView image_item = (ImageView) findViewById(R.id.image_item);
