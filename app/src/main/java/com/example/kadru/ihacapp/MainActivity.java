@@ -101,14 +101,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    // public void image_res() {
-    //    ImageView image_item = (ImageView) findViewById(R.id.image_item);
-    //  final DbPictogramsRepository dbPictogramsRepository= new DbPictogramsRepository(this.getApplicationContext());
-    // image_item.setImageURI(Uri.fromFile(new File("file:///android_asset/image/icons/Vloer.gif")));
-    //   image_item.setImageResource(R.drawable.ic_launcher_background);
-    //  Picasso.with(this.getApplicationContext())
-    //        .load("file:///android_asset/" + dbPictogramsRepository.getData().toString())
-    //         .into(image_item);
-    //  Log.d(TAG, "Picasso is running :" + dbPictogramsRepository.getData().toString());
-    //  }
+
 }
