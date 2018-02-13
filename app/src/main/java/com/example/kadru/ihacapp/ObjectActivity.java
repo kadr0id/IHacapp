@@ -1,12 +1,18 @@
 package com.example.kadru.ihacapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
 
 public class ObjectActivity extends AppCompatActivity {
     public static ListView object_item;
+    String imageForPicasso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,15 +24,15 @@ public class ObjectActivity extends AppCompatActivity {
         object_item.setAdapter(adapter);
 
 
-        //    ImageView image_item = (ImageView) findViewById(R.id.image_item);
-        //  final DbPictogramsRepository dbPictogramsRepository= new DbPictogramsRepository(this.getApplicationContext());
-        // image_item.setImageURI(Uri.fromFile(new File("file:///android_asset/image/icons/Vloer.gif")));
-        //   image_item.setImageResource(R.drawable.ic_launcher_background);
-        //  Picasso.with(this.getApplicationContext())
-        //        .load("file:///android_asset/" + dbPictogramsRepository.getData().toString())
-        //         .into(image_item);
-        //  Log.d(TAG, "Picasso is running :" + dbPictogramsRepository.getData().toString());
-        //  }
+
+
+            ImageView image_item = (ImageView) findViewById(R.id.image_item);
+             final DbPictogramsRepository dbPictogramsRepository= new DbPictogramsRepository(this.getApplicationContext());
+        Picasso.with(this)
+                .load("file:///android_asset/" + imageForPicasso)
+                .error(R.mipmap.ic_launcher)
+                .into(image_item);
+        imageForPicasso = dbPictogramsRepository.getData().toString();
 
     }
 

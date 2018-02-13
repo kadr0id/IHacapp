@@ -16,7 +16,7 @@ public class DbObjectsRepository {
         cont = context;
     }
     public ArrayList<String> getData(){
-        ArrayList<String> locations = new ArrayList<>();
+        ArrayList<String> objects = new ArrayList<>();
         if (MainActivity.typeId == 1) {
             cur = db.rawQuery("select objects.pictogram, object_lang.name from objects_locations inner join object_lang on objects_locations.object_id = object_lang._id inner join objects on  object_lang._id = objects._id where objects_locations.location_id =1 and object_lang.language =1 and objects.active =1 and objects.wholesaler_id is null;", null);
         }
@@ -37,7 +37,7 @@ public class DbObjectsRepository {
         }
         if (cur != null && cur.moveToFirst()) {
             do {
-                locations.add(cur.getString(cur.getColumnIndexOrThrow("name")));
+                objects.add(cur.getString(cur.getColumnIndexOrThrow("name")));
             } while (cur.moveToNext());
             if (cur != null) {
                 cur.close();
@@ -45,7 +45,7 @@ public class DbObjectsRepository {
             db.close();
         }
 
-        return locations;
+        return objects;
     }
 
 }
