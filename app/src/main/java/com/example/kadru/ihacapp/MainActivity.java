@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "itemClick: position = " + position + ", id = "
                         + id);
                   // objects_res();
-                    onClick(ObjectActivity.object_item);
+                    onClick(ObjectActivity.object_items);
                 if (id == 0)
                     typeId = 1;
                 else if (id == 1)

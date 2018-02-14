@@ -6,7 +6,7 @@ import android.widget.ListView;
 import java.util.List;
 
 public class ObjectActivity extends AppCompatActivity {
-    public static ListView object_item;
+    public static ListView object_items;
     ObjectsAdapter objectsAdaptor;
 
     @Override
@@ -20,8 +20,8 @@ public class ObjectActivity extends AppCompatActivity {
 
         List<ObjectItem> objectItems = repository.getData();
         objectsAdaptor = new ObjectsAdapter(this, objectItems);
-        object_item = (ListView) findViewById(R.id.object_item);
-        object_item.setAdapter(objectsAdaptor);
+        object_items = (ListView) findViewById(R.id.object_items);
+        object_items.setAdapter(objectsAdaptor);
 
     }
 }
