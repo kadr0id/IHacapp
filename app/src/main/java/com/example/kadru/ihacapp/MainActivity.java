@@ -1,7 +1,6 @@
 package com.example.kadru.ihacapp;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 
@@ -11,14 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.squareup.picasso.Picasso;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

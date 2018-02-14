@@ -5,11 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectsAdapter extends BaseAdapter {
@@ -48,6 +51,10 @@ public class ObjectsAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.name = ((TextView) convertView.findViewById(R.id.object_item));
             viewHolder.pictogram = (ImageView) convertView.findViewById(R.id.image_item);
+            viewHolder.checkPlanItems = (CheckBox) convertView.findViewById(R.id.check_item);
+//         checkPlanItems.setOnCheckedChangeListener(myCheckChangeList);
+//         checkPlanItems.setTag(position);
+//         checkPlanItems.setChecked(objectsItems.plan);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -66,8 +73,28 @@ public class ObjectsAdapter extends BaseAdapter {
         return ((ObjectItem) getItem(position));
     }
 
+
+
     private static class ViewHolder {
         TextView name;
         ImageView pictogram;
+        CheckBox checkPlanItems;
     }
+
+    ArrayList<ObjectItem> getPlan(){
+        ArrayList<ObjectItem> plan = new ArrayList<ObjectItem>();
+        for (ObjectItem item : objectsItems) {
+            if (item.plan)
+                plan.add(item);
+        }
+        return plan;
+    }
+
+    CompoundButton.OnCheckedChangeListener myCheckChangeList = new CompoundButton.OnCheckedChangeListener() {
+        public void onCheckedChanged(CompoundButton buttonView,
+                                     boolean isChecked) {
+
+            getObjectItem((Integer) buttonView.getTag()).plan = isChecked;
+        }
+    };
 }

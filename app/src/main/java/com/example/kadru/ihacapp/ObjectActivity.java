@@ -3,6 +3,12 @@ package com.example.kadru.ihacapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+
+import com.example.kadru.ihacapp.DbObjectsRepository;
+import com.example.kadru.ihacapp.ObjectItem;
+import com.example.kadru.ihacapp.ObjectsAdapter;
+import com.example.kadru.ihacapp.R;
+
 import java.util.List;
 
 public class ObjectActivity extends AppCompatActivity {
