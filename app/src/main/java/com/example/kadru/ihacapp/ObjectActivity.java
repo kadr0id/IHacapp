@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ObjectActivity extends AppCompatActivity {
     public static ListView object_items;
-    ObjectsAdapter objectsAdaptor;
+    ObjectsAdapter objectsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +21,15 @@ public class ObjectActivity extends AppCompatActivity {
        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
 
         List<ObjectItem> objectItems = repository.getData();
-        objectsAdaptor = new ObjectsAdapter(this, objectItems);
+        objectsAdapter = new ObjectsAdapter(this, objectItems);
         object_items = (ListView) findViewById(R.id.object_items);
-        object_items.setAdapter(objectsAdaptor);
+        object_items.setAdapter(objectsAdapter);
     }
-    public void showPlane(View v) {
+    public void showPlan(View v) {
         String result = "Plan items: ";
-        for (ObjectItem objec : objectsAdaptor.getPlan()){
-            if(objec.plan)
-                result += "\n" + objec.name;
+        for (ObjectItem object : objectsAdapter.getPlan()){
+            if(object.plan)
+                result += "\n" + object.name;
         }
         Toast.makeText(this, result, Toast.LENGTH_LONG).show();
     }
