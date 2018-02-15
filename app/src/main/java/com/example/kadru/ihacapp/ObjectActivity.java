@@ -2,12 +2,10 @@ package com.example.kadru.ihacapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.kadru.ihacapp.DbObjectsRepository;
-import com.example.kadru.ihacapp.ObjectItem;
-import com.example.kadru.ihacapp.ObjectsAdapter;
-import com.example.kadru.ihacapp.R;
 
 import java.util.List;
 
@@ -20,14 +18,20 @@ public class ObjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-
        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
-
 
         List<ObjectItem> objectItems = repository.getData();
         objectsAdaptor = new ObjectsAdapter(this, objectItems);
         object_items = (ListView) findViewById(R.id.object_items);
         object_items.setAdapter(objectsAdaptor);
-
     }
+    public void showPlane(View v) {
+        String result = "Plan items: ";
+        for (ObjectItem objec : objectsAdaptor.getPlan()){
+            if(objec.plan)
+                result += "\n" + objec.name;
+        }
+        Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+    }
+
 }

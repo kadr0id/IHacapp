@@ -39,7 +39,7 @@ public class DbObjectsRepository {
             do {
                 String name = cur.getString(cur.getColumnIndexOrThrow("name"));
                 String pictogram = cur.getString(cur.getColumnIndexOrThrow("pictogram"));
-                ObjectItem objectItem = new ObjectItem(name, pictogram);
+                ObjectItem objectItem = new ObjectItem(name, pictogram, false);
                 objects.add(objectItem);
             } while (cur.moveToNext());
             if (cur != null) {
