@@ -20,27 +20,28 @@ public class DbPlanRepository {
     private SQLiteDatabase db;
     private Context cont;
     Cursor cur;
-    public static ListView object_items;
+    public static List object_items;
 
 
     public DbPlanRepository(Context context) {
         db = new DbHelper(context).getWritableDatabase();
         cont = context;
     }
-    //   ObjectsAdapter objectsAdapter = new ObjectsAdapter(this, );
-//    public void savePlan(View v) {
-//
-//    }
-//
-//    public void putData (List<String> argsItems) {
-//        ContentValues cv = new ContentValues();
-//         db.rawQuery("create table cleaning_plan (_id)",  null);
-//        for (ObjectItem object : objectsAdapter.getPlan()) {
-//            if (object.plan)
-//              //  cv.put(object.name);
-//            db.insert("cleaning_plan", null, cv );
-//        }
-//        db.close();
-//    }
+        // fix adapter???
+       ObjectsAdapter objectsAdapter = new ObjectsAdapter(this, object_items);
+    public void savePlan(View v) {
+
+    }
+
+    public void putData (List<String> argsItems) {
+        ContentValues cv = new ContentValues();
+         db.rawQuery("create table cleaning_plan (_id)",  null);
+        for (ObjectItem object : objectsAdapter.getPlan()) {
+            if (object.plan)
+              //  cv.put(object.name);
+            db.insert("cleaning_plan", null, cv );
+        }
+        db.close();
+    }
 
 }
