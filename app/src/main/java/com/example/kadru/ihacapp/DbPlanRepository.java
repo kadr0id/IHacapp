@@ -2,44 +2,35 @@ package com.example.kadru.ihacapp;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class DbPlanRepository {
 
 
-    List <String> argsItems;
+    ObjectsAdapter adapter;
 
 
     private SQLiteDatabase db;
     private Context cont;
-    Cursor cur;
-    public static List object_items;
+
 
 
     public DbPlanRepository(Context context) {
         db = new DbHelper(context).getWritableDatabase();
         cont = context;
     }
-        // fix adapter???
-       ObjectsAdapter objectsAdapter = new ObjectsAdapter(this, object_items);
-    public void savePlan(View v) {
 
-    }
 
-    public void putData (List<String> argsItems) {
+    public void putData () {
         ContentValues cv = new ContentValues();
-         db.rawQuery("create table cleaning_plan (_id)",  null);
-        for (ObjectItem object : objectsAdapter.getPlan()) {
+         db.rawQuery("create table cleaning_plan (_id, name)",  null);
+        for (ObjectItem object : adapter.getPlan()) {
             if (object.plan)
-              //  cv.put(object.name);
-            db.insert("cleaning_plan", null, cv );
+                cv.put("_id", object.name);
+        }
+        for (int i=0; i < cv.size(); i++ ) {
+            db.insert("cleaning_plan", null, cv);
         }
         db.close();
     }

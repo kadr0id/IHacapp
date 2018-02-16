@@ -21,7 +21,7 @@ public class ObjectsAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<ObjectItem> objectsItems;
 
-    ObjectsAdapter(DbPlanRepository context, List<ObjectItem> objectsItem) {
+    ObjectsAdapter(ObjectActivity context, List<ObjectItem> objectsItem) {
         ctx = context;
         objectsItems = objectsItem;
         inflater = (LayoutInflater) ctx

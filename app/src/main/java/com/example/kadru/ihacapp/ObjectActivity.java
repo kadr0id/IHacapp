@@ -20,18 +20,21 @@ public class ObjectActivity extends AppCompatActivity {
 
        final DbObjectsRepository repository = new DbObjectsRepository(this.getApplicationContext());
 
+
         List<ObjectItem> objectItems = repository.getData();
         objectsAdapter = new ObjectsAdapter(this, objectItems);
         object_items = (ListView) findViewById(R.id.object_items);
         object_items.setAdapter(objectsAdapter);
     }
     public void showPlan(View v) {
+        final DbPlanRepository dbPlanRepository = new DbPlanRepository(this.getApplicationContext());
         String result = "Plan items: ";
         for (ObjectItem object : objectsAdapter.getPlan()){
             if(object.plan)
                 result += "\n" + object.name;
         }
         Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+      //  dbPlanRepository.putData();
     }
 
 }
